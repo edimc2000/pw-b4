@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test'
 
 
+
 test.describe('Validate the Wiki Page', () => {
 
-    test.beforeEach('', async ({page }) => {
+    test.beforeEach('', async ({ page }) => {
         await page.goto('https://wikipedia.org/')
     })
 
@@ -18,4 +19,21 @@ test.describe('Validate the Wiki Page', () => {
     test('[TS003] Validate search input', async ({ page }) => {
         await expect(page.locator('#searchInput')).toBeEmpty()
     })
+
+    test('[TS004] Search for Donald Trump', async ({ page }) => {
+
+        await page.locator('#searchInput').fill('Donald Trump')
+        // await page.waitForTimeout(1000)
+        await page.locator('button.pure-button').click()
+        // await page.waitForTimeout(5000)
+    })
+
+
+    test('[TS0052] Lazada', async ({ page }) => {
+        await page.goto('https://www.lazada.com.ph/')
+
+
+        await page.waitForTimeout(5000)
+    })
+
 })
