@@ -1,7 +1,5 @@
 import { test, expect } from '@playwright/test'
 
-
-
 test.describe('Validate the Wiki Page', () => {
 
     test.beforeEach('', async ({ page }) => {
@@ -29,11 +27,14 @@ test.describe('Validate the Wiki Page', () => {
     })
 
 
-    test('[TS0052] Lazada', async ({ page }) => {
-        await page.goto('https://www.lazada.com.ph/')
 
-
-        await page.waitForTimeout(5000)
-    })
 
 })
+
+
+    test('[TS0052] Lazada', async ({ page }) => {
+        await page.goto('https://www.lazada.com.ph/')
+        await page.locator('#q').fill('samsung')
+        await page.locator('a[class^="search"]').click()
+        await page.waitForTimeout(5000)
+    })
